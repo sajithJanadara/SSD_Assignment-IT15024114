@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-    $(document).ready(function(){
-        
-        $.ajax({
-            
-            type: 'post', 
-            url: '/csrf_token', 
-            data: { get_param: 'value' }, 
-            dataType: 'json',
-            success: function(data){
-                $("#csrf").val(data.value);
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                
-                console.log('jqXHR:');
-                console.log(jqXHR);
-                console.log('textStatus:');
-                console.log(textStatus);
-                console.log('errorThrown:');
-                console.log(errorThrown);
-            }
+        $(document).ready(function () {
+
+            $.ajax({
+
+                type: 'post',
+                url: '/csrf_token',
+                data: { get_param: 'value' },
+                dataType: 'json',
+                success: function (data) {
+                    $("#csrf").val(data.value);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                    console.log('jqXHR:');
+                    console.log(jqXHR);
+                    console.log('textStatus:');
+                    console.log(textStatus);
+                    console.log('errorThrown:');
+                    console.log(errorThrown);
+                }
+            });
         });
-    });
     </script>
-<form action="/form_page" method="post" id="nameform">
-  Masseage: <input type="text" name="message"><br>
-  <input type="hidden" name="_csrf" id="csrf" value=""/>
-  <button type="submit" form="nameform" value="Submit">submit</button>
-</form>
+    <form action="/form_page" method="post" id="nameform">
+        Masseage: <input type="text" name="message"><br>
+        <input type="hidden" name="_csrf" id="csrf" value="" />
+        <button type="submit" form="nameform" value="Submit">submit</button>
+    </form>
 
 </body>
+
 </html>

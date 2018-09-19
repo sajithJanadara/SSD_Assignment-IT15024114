@@ -10,12 +10,12 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
-  }));
+}));
 
 const csrfMiddleware = csurf({
     cookie: false,
-    ignoreMethods: ['POST'] 
-  });
+    ignoreMethods: ['POST']
+});
 app.use(cookieParser());
 
 app.use('/', express.static(__dirname + '/public'));
@@ -23,7 +23,7 @@ app.use('/', express.static(__dirname + '/public'));
 const username = 'user';
 const password = '12345';
 
-var generateSecret = function(){
+var generateSecret = function () {
     var secret = uuid();
     return secret;
 }
@@ -38,9 +38,9 @@ app.use(session({
     // }
 }));
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     if (req.cookies.user_sid && !req.session.username) {
-        res.clearCookie('user_sid');        
+        res.clearCookie('user_sid');
     }
     next();
 });
@@ -50,67 +50,67 @@ var sessionChecker = (req, res, next) => {
         res.sendFile(__dirname + '/public/form_page.html');
     } else {
         next();
-    }    
+    }
 };
 
-app.get('/',sessionChecker, function(req, res) {
+app.get('/', sessionChecker, function (req, res) {
     res.sendFile(__dirname + '/public/login.html');
 });
 
 
 
-app.post('/login', csrfMiddleware, function(req, res){
+app.post('/login', csrfMiddleware, function (req, res) {
     var submit_username = req.body.username;
     var submit_password = req.body.password;
-    
-    if(submit_username == username && submit_password == password){
+
+    if (submit_username == username && submit_password == password) {
 
         req.session.username = username;
-        
+
         req.session.csrf_token = req.csrfToken();
         res.redirect('/form_page');
         console.log(req.session.csrf_token);
-    
+
     }
-    else{
+    else {
         res.redirect('/');
     }
-    
-});
-
-app.post('/csrf_token', function(req,res){
-    
-    res.json({value:req.session.csrf_token});
 
 });
 
-app.get('/form_page',function(req,res){
+app.post('/csrf_token', function (req, res) {
+
+    res.json({ value: req.session.csrf_token });
+
+});
+
+app.get('/form_page', function (req, res) {
     if (req.session.username && req.cookies.user_sid) {
         res.sendFile(__dirname + '/public/form_page.html');
     }
-    else{
+    else {
         res.redirect('/');
     }
-    
+
 });
 
-app.post('/form_page',function(req,res){
+app.post('/form_page', function (req, res) {
     if (req.session.username && req.cookies.user_sid) {
-        if(req.body._csrf == req.session.csrf_token){
+        if (req.body._csrf == req.session.csrf_token) {
             res.send("successfull");
         }
-        else{
-        
+        else {
+
             res.send("cannot proceed");
         }
     }
-    else{
+    else {
         res.redirect('/');
     }
-   
+
 });
 
-app.listen(3000, function(err){
+app.listen(3000, function (err) {
     if (err) {
         console.error(err);
         return;
