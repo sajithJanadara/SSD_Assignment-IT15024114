@@ -5,7 +5,7 @@ open project folder using command prompt.
 then type 'npm install'
 step 3 - run application
 open project folder using command prompt.
-then type 'node inde.js'
+then type 'node index.js'
 
 you access application following url 'http://localhost:3000'
 
