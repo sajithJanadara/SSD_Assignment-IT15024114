@@ -1,7 +1,7 @@
 # SSD_Assignment-IT15024114
 
 To run application
-//common for both application
+ //common for both application// 
 setp 1 - make sure that you have installed node.js on your machine.
 step 2 -install all the node modules, required for project.
 open project folder using command prompt.
