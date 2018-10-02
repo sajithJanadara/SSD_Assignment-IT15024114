@@ -1,6 +1,6 @@
 # SSD_Assignment-IT15024114
 
-# steps for run application
+# steps to run the application
 
 # setp 1 - make sure that you have installed node.js on your machine.
 # step 2 -install all the node modules, required for project.
@@ -15,5 +15,8 @@ you access application following url 'http://localhost:3000'
 for login userName = user password = 12345
 
 
-after you logged into application
-try to test this application work fines, open the public/test folder and open form_page_fake.html in your broswer and perform post request, if application server reponse with error, application works fine.
+# for test the application
+
+    you can find html page called "form_page_fake.html"  inside the "fake html Pages/Synchronizer Token pattern" folder
+
+    open this html page in a browser that you have used for this application. then press submit button to submit form.
