@@ -1,6 +1,6 @@
 # SSD_Assignment-IT15024114
 
-# steps for run application
+# steps to run the application
  //common for both application// 
 # setp 1 - make sure that you have installed node.js on your machine.
 # step 2 -install all the node modules, required for project.
