@@ -18,5 +18,5 @@ for login userName = user password = 12345
 
     you can find html page called "form_page_fake.html"  inside the "fake html Pages/Double submit token pattern" folder
 
-    open this html page in browser that you have used for this application. then press submit button to submit form.
+    open this html page in a browser that you have used for this application. then press submit button to submit form.
 
