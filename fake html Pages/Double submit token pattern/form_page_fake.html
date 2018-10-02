@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if (document.cookie.length) {
+
+                var nameValueArray = document.cookie.split("=");
+                var csrf_token = nameValueArray[1];
+                document.getElementById("csrf").value = csrf_token;
+            }
+
+
+        });
+    </script>
+    <form action="http://localhost:3001/form_page" method="post" id="nameform">
+        Masseage: <input type="text" name="message"><br>
+        <input type="hidden" name="_csrf" id="csrf" value="" />
+        <button type="submit" form="nameform" value="Submit">submit</button>
+    </form>
+
+</body>
+
+</html>

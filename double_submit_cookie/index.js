@@ -69,6 +69,7 @@ app.post('/login', csrfMiddleware, function (req, res) {
         req.session.username = username;
         var cookie = req.cookies.csrf;
         var token = req.csrfToken();
+        console.log(token)
         if (cookie === undefined) {
             res.cookie('csrf', token, { maxAge: 24 * 60 * 60 * 1000, path: "/", httpOnly: false });
             res.redirect('/form_page');
