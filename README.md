@@ -10,6 +10,13 @@
     open project folder using command prompt.
     then type 'node index.js'
 
-you access application following url 'http://localhost:3000'
+you can access synchronizer token pattern application using this url 'http://localhost:3000'
+
+you can access double submit cookie pattern application using this url 'http://localhost:3001'
 
 for login userName = user password = 12345
+
+# for test those two applications
+
+you can use two html file which I have provided in folder called fake html pages.
+
