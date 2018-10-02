@@ -18,5 +18,5 @@ for login userName = user password = 12345
 
 # for test those two applications
 
-you can use two html file which I have provided in folder called fake html pages.
+you can use two html files which I have provided in folder called fake html pages.
 
