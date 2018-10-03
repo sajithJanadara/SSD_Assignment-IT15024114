@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+//intialize csrfMiddleware
 const csrfMiddleware = csurf({
     cookie: false,
     ignoreMethods: ['POST']
@@ -23,11 +24,13 @@ app.use('/', express.static(__dirname + '/public'));
 const username = 'user';
 const password = '12345';
 
+// generate secret
 var generateSecret = function () {
     var secret = uuid();
     return secret;
 }
 
+//generate session
 app.use(session({
     key: 'user_sid',
     secret: generateSecret(),
@@ -58,7 +61,7 @@ app.get('/', sessionChecker, function (req, res) {
 });
 
 
-
+//endpoint for loging
 app.post('/login', csrfMiddleware, function (req, res) {
     var submit_username = req.body.username;
     var submit_password = req.body.password;
@@ -78,12 +81,14 @@ app.post('/login', csrfMiddleware, function (req, res) {
 
 });
 
+//endpoint to get csrftoken
 app.post('/csrf_token', function (req, res) {
 
     res.json({ value: req.session.csrf_token });
 
 });
 
+//endpoint to server From_Page
 app.get('/form_page', function (req, res) {
     if (req.session.username && req.cookies.user_sid) {
         res.sendFile(__dirname + '/public/form_page.html');
@@ -94,6 +99,7 @@ app.get('/form_page', function (req, res) {
 
 });
 
+//endpoint to accept from pages submission CSRF Token validation
 app.post('/form_page', function (req, res) {
     if (req.session.username && req.cookies.user_sid) {
         if (req.body._csrf == req.session.csrf_token) {
