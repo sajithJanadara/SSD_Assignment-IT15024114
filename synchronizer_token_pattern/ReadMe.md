@@ -10,7 +10,7 @@
     open project folder using command prompt.
     then type 'node index.js'
 
-you access application following url 'http://localhost:3000'
+you can access application following url 'http://localhost:3000'
 
 for login userName = user password = 12345
 
